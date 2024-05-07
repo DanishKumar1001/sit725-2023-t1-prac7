@@ -33,9 +33,15 @@ const io = socketIo(server);
 // WebSocket event handling
 io.on('connection', (socket) => {
   console.log('Client connected');
+  console.log('Client connected on port number 3000');
+  console.log('Random Number: 222');
 
   // Send a message to the client-side
   socket.emit('message', 'Welcome to the Student Portal!');
+
+  io.on('disconnect', (socket) => {
+    console.log('Client Disconnected');
+  });
 });
 
 // Make the io object accessible outside
